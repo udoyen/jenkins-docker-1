@@ -28,4 +28,4 @@ docker image build \
     -f ./docker/Dockerfile \
     .
 
-docker image rm ${JENKINS_IMAGE_INTERMEDIATE}
+# docker image rm ${JENKINS_IMAGE_INTERMEDIATE}
