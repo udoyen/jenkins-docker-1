@@ -5,5 +5,6 @@ JENKINS_CONTAINER="jenkins"
 JENKINS_URL="https://updates.jenkins-ci.org/download/war/${JENKINS_VERSION}/jenkins.war"
 JENKINS_SHA="47620a00004af5634e45904149897fe4a36b0463ec691bfabc2086779f90f127"
 JENKINS_VOLUME="jenkins_home"
+DOCKER_HOST_GID=$(cut -d: -f3 < <(getent group docker))
 DOCKER_CE_VERSION_STRING='5:19.03.4~3-0~debian-buster'
 PROJECT_LABEL="project=jenkins-${JENKINS_VERSION}"

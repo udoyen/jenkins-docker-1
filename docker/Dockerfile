@@ -1,6 +1,7 @@
 ARG JENKINS_IMAGE
 FROM ${JENKINS_IMAGE}
 
+ARG DOCKER_HOST_GID
 ARG DOCKER_CE_VERSION_STRING
 
 USER root
@@ -22,10 +23,11 @@ RUN echo "Installing docker in container" && \
         stable" && \
     apt-get update && \
     apt-get install -y \
-        docker-ce=${DOCKER_CE_VERSION_STRING} \
-        docker-ce-cli=${DOCKER_CE_VERSION_STRING} \
-        containerd.io && \
+        docker-ce-cli=${DOCKER_CE_VERSION_STRING} && \
+    groupadd -g ${DOCKER_HOST_GID} docker && \
     usermod -a -G docker jenkins && \
+    apt-get -y autoremove && \
+    apt-get -y autoclean && \
     rm -rf /var/lib/apt/lists/*
 
 USER jenkins
