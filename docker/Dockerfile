@@ -28,7 +28,9 @@ RUN echo "Installing docker in container" && \
     usermod -a -G docker jenkins && \
     apt-get -y autoremove && \
     apt-get -y autoclean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    touch /var/run/docker.sock && \
+    chown root:docker /var/run/docker.sock
 
 USER jenkins
 
