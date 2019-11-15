@@ -5,7 +5,7 @@ install:
 	$(MAKE) volume
 	$(MAKE) image_intermediate
 	$(MAKE) image
-	$(MAKE) container
+	$(MAKE) setup_docker
 
 .PHONY: image_intermediate
 image_intermediate:
@@ -19,9 +19,17 @@ image:
 volume:
 	./bin/create_jenkins_home_volume.sh
 
-.PHONY: container
+.PHONY: setup_docker
 container:
+	./bin/setup_docker.sh
+
+.PHONY: start_docker
+start_docker:
 	./bin/start_docker.sh
+
+.PHONY: stop_docker
+stop_docker:
+	./bin/stop_docker.sh
 
 .PHONY: clean
 clean:
