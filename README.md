@@ -1,7 +1,6 @@
 # Building a Jenkins container to run docker locally
 
-Code for the article: <insert link here when online>
-
+A more detailed explanation: https://www.lucacerone.net/2019/11/running-jenkins-in-a-docker-container-on-ubuntu-18-04-host/
 
 ### Change default settings
 
