@@ -20,16 +20,20 @@ volume:
 	./bin/create_jenkins_home_volume.sh
 
 .PHONY: setup_docker
-container:
+setup_docker:
 	./bin/setup_docker.sh
 
-.PHONY: start_docker
-start_docker:
-	./bin/start_docker.sh
+.PHONY: container
+container:
+	./bin/make_container.sh
 
-.PHONY: stop_docker
-stop_docker:
-	./bin/stop_docker.sh
+.PHONY: start_container
+start_container:
+	./bin/start_container.sh
+
+.PHONY: stop_container
+stop_container:
+	./bin/stop_container.sh
 
 .PHONY: clean
 clean:
