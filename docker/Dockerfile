@@ -32,8 +32,12 @@ RUN echo "Installing docker in container" && \
     touch /var/run/docker.sock && \
     chown root:docker /var/run/docker.sock
     
-# Install kubectl from Docker Hub.
-COPY --from=lachlanevenson/k8s-kubectl:v1.10.3 /usr/local/bin/kubectl /usr/local/bin/kubectl
+# Install kubectl.
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl && \
+    chmod +x ./kubectl && \
+    mv ./kubectl /usr/local/bin/kubectl && \
+    rm -rf ./kubectl
+
 
 USER jenkins
 
